@@ -1,7 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { NewsService } from './news.service';
 import { CreateNewsDto } from './dto/create-news.dto';
 import { UpdateNewsDto } from './dto/update-news.dto';
+import { CreateCommentDto } from './dto/create-comment.dto';
+import { UpdateCommentDto } from './dto/update-comment.dto';
 
 @Controller('news')
 export class NewsController {
@@ -12,16 +22,30 @@ export class NewsController {
     return this.newsService.create(createNewsDto);
   }
 
+  @Post('comment')
+  createComment(@Body() createCommentDto: CreateCommentDto) {
+    return this.newsService.createComment(createCommentDto);
+  }
+
   @Get()
   findAll() {
     return this.newsService.findAll();
   }
-
+  @Get(':id/details')
+  status(@Param('id') id: string) {
+    return this.newsService.status(+id);
+  }
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.newsService.findOne(+id);
   }
-
+  @Patch(':id/comment')
+  updateComment(
+    @Param('id') id: string,
+    @Body() updateCommentDto: UpdateCommentDto,
+  ) {
+    return this.newsService.updateComment(+id, updateCommentDto);
+  }
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateNewsDto: UpdateNewsDto) {
     return this.newsService.update(+id, updateNewsDto);
