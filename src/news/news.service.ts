@@ -19,6 +19,7 @@ export class NewsService {
           id: 1,
           author: 'Mifort',
           text: 'My commnet',
+          replys: [],
           date: '2022-08-08T15:40:12.086Z',
         },
       ],
@@ -34,6 +35,7 @@ export class NewsService {
           id: 1,
           author: 'Mifort',
           text: 'My commnet',
+          replys: [],
           date: '2022-08-08T15:40:12.086Z',
         },
       ],
@@ -64,6 +66,19 @@ export class NewsService {
 
     this.news[newsId - 1].comments.push(comment);
   }
+
+  commentReply(id: number, commentReplyDto: CreateCommentDto) {
+    const news = this.findOne(id);
+    const comment = news.comments[commentReplyDto.newsId - 1];
+    const reply: Comment = {
+      id: news.comments[commentReplyDto.newsId - 1].id + 1,
+      author: 'Mifort',
+      text: commentReplyDto.text,
+      date: new Date().toUTCString(),
+    };
+    comment.replys.push(reply);
+  }
+
   findAll() {
     return this.news;
   }

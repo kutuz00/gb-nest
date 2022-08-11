@@ -46,6 +46,13 @@ export class NewsController {
   ) {
     return this.newsService.updateComment(+id, updateCommentDto);
   }
+  @Post(':id/comment')
+  commentReply(
+    @Param('id') id: string,
+    @Body() commentReplyDto: CreateCommentDto,
+  ) {
+    return this.newsService.commentReply(+id, commentReplyDto);
+  }
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateNewsDto: UpdateNewsDto) {
     return this.newsService.update(+id, updateNewsDto);
