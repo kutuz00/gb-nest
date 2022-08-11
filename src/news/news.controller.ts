@@ -31,7 +31,6 @@ export class NewsController {
   createComment(@Body() createCommentDto: CreateCommentDto) {
     return this.newsService.createComment(createCommentDto);
   }
-
   @Get()
   findAll() {
     return this.newsService.findAll();
