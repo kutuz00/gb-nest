@@ -21,8 +21,8 @@ export class NewsController {
   constructor(private readonly newsService: NewsService) {}
 
   @Post()
-  @Admin('admin')
-  @UseGuards(RolesGuard)
+  // @Admin('admin')
+  // @UseGuards(RolesGuard)
   create(@Body() createNewsDto: CreateNewsDto) {
     return this.newsService.create(createNewsDto);
   }
