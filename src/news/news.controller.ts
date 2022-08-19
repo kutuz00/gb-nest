@@ -10,9 +10,7 @@ import {
   UseInterceptors,
   UploadedFile,
   ParseFilePipe,
-  MaxFileSizeValidator,
   FileTypeValidator,
-  HttpCode,
   HttpStatus,
 } from '@nestjs/common';
 import { NewsService } from './news.service';
