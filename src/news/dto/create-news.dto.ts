@@ -6,4 +6,5 @@ export class CreateNewsDto {
   @Matches(/^.{10,5000}$/, { message: 'Must be at least 10 characters' })
   text: string;
   thumb: string;
+  file: string;
 }

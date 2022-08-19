@@ -59,7 +59,11 @@ export class NewsController {
   ) {
     console.log(file);
 
-    return this.newsService.create({ ...createNewsDto, thumb: file.filename });
+    return this.newsService.create({
+      ...createNewsDto,
+      thumb: file.filename,
+      file: file.path,
+    });
   }
 
   @Post('comment')

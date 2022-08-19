@@ -8,4 +8,5 @@ export class News {
   comments: Comment[];
   date: string;
   thumb: string;
+  attachments: string[];
 }

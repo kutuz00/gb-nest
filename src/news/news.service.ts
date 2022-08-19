@@ -18,6 +18,7 @@ export class NewsService {
       comments: [],
       date: new Date().toUTCString(),
       thumb: createNewsDto.thumb,
+      attachments: [createNewsDto.file],
     };
     this.news.push(news);
   }
